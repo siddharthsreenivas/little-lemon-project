@@ -1,12 +1,19 @@
 import React from "react";
+import FooterLogo from '../assets/FooterLogoWhite.svg'
+import MaxWidthContainer from "./MaxWidthContainer";
 
 const Footer = () => {
   return (
-    <footer className="bg-theme-green text-theme-gray font-Karla">
-      <img src="./Logo.svg" alt="Little Lemon Logo" />
+    <footer className="bg-theme-green text-theme-gray font-Karla px-6 py-12 w-full flex justify-center">
+
+      <MaxWidthContainer>
+
+     <div className="flex flex-col sm:flex-row items-start justify-between gap-6 text-xl"> 
+
+      <img src={FooterLogo} alt="Little Lemon Logo" className="w-24 md:w-32 cursor-pointer" />
 
       <div>
-        <p>Doormat Navigation</p>
+        <p className="text-theme-yellow font-semibold">Get to know us</p>
         <ul>
           {[
             "Home",
@@ -14,45 +21,47 @@ const Footer = () => {
             "Menu",
             "Reservation",
             "Order Online",
-            "Login",
           ].map((item, index) => (
-            <li>
-              <a href="#home">{item}</a>
+            <li key={index}>
+              <a href="#home" className="hover:text-theme-yellow hover:underline underline-offset-4">{item}</a>
             </li>
           ))}
         </ul>
       </div>
 
       <div>
-        <p>Contact</p>
+        <p className="text-theme-yellow font-semibold">Reach out to us</p>
         <ul>
           {[
             "Adress",
             "Phone number",
             "Email"
           ].map((item, index) => (
-            <li>
-              <a href="#home">{item}</a>
+            <li key={index}>
+              <a href="#home" className="hover:text-theme-yellow hover:underline underline-offset-4">{item}</a>
             </li>
           ))}
         </ul>
       </div>
 
       <div>
-        <p>Social Media Links</p>
+        <p className="text-theme-yellow font-semibold">Connect with us</p>
         <ul>
           {[
-            "Adress",
-            "Phone number",
-            "Email"
+            "Facebook",
+            "Instagram",
+            "LinkedIn"
           ].map((item, index) => (
-            <li>
-              <a href="#home">{item}</a>
+            <li key={index}>
+              <a href="#home" className="hover:text-theme-yellow hover:underline underline-offset-4">{item}</a>
             </li>
           ))}
         </ul>
       </div>
 
+      </div>
+
+      </MaxWidthContainer>
     </footer>
   );
 };

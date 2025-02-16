@@ -1,9 +1,19 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import hamburger from "../assets/hamburgerIcon.svg";
 import { IoMdClose } from "react-icons/io";
 
 const Nav = () => {
+
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden"; // Disable scrolling
+    } else {
+      document.body.style.overflow = "auto"; // Enable scrolling
+    }
+  }, [isOpen])
+  
 
   return (
     <nav className="flex">
@@ -13,7 +23,7 @@ const Nav = () => {
             <li key={index}>
               <a
                 href="#home"
-                className="text-theme-black font-Karla font-medium text-lg hover:text-theme-yellow/90 hover:underline underline-offset-4 transition-all duration-200"
+                className="text-theme-green font-Karla font-medium text-lg hover:text-theme-yellow/90 hover:underline underline-offset-4 transition-all duration-200"
               >
                 {item}
               </a>
@@ -34,7 +44,7 @@ const Nav = () => {
         )}
       </div>
 
-      <div className={`bg-white absolute top-16 ${isOpen ? 'translate-x-0 opacity-100' : 'translate-x-[102vw] opacity-0'} transition-all duration-500 inset-x-0 py-6 h-screen px-8 md:hidden`}>
+      <div className={`bg-white absolute top-20 ${isOpen ? 'translate-x-0 opacity-100' : 'translate-x-[102vw] opacity-0'} transition-all duration-500 inset-x-0 py-6 h-screen px-8 md:hidden border-t border-theme-green`}>
         <ul className="space-y-4 text-xl">
           {[
             "Home",
@@ -47,7 +57,7 @@ const Nav = () => {
             <li key={index}>
               <a
                 href="#home"
-                className="text-theme-black font-Karla font-medium hover:text-theme-yellow/90 hover:underline underline-offset-4 transition-all duration-200"
+                className="text-theme-green font-Karla font-medium hover:text-theme-yellow/90 hover:underline underline-offset-4 transition-all duration-200"
               >
                 {item}
               </a>
