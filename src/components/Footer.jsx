@@ -2,7 +2,7 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <footer>
+    <footer className="bg-theme-green text-theme-gray font-Karla">
       <img src="./Logo.svg" alt="Little Lemon Logo" />
 
       <div>
