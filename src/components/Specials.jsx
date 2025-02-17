@@ -32,7 +32,7 @@ const Specials = () => {
         <div className="flex flex-col gap-10 pb-16 lg:pt-32 pt-12 md:pt-24 items-center">
           <div className="flex flex-col gap-3 sm:flex-row justify-between items-center w-full">
             <h2 className="font-Markazi text-5xl">This weeks specials!</h2>
-            <button className="py-3 px-9 rounded-2xl text-xl font-semibold font-Karla bg-theme-yellow text-theme-green w-fit">
+            <button className="py-3 px-9 rounded-2xl text-xl font-semibold font-Karla bg-theme-yellow text-theme-green w-fit hover:scale-[102%] transition-all duration-200 hover:shadow-md hover:shadow-theme-green/40 active:scale-[98%]">
               Online Menu
             </button>
           </div>
@@ -51,7 +51,7 @@ const Specials = () => {
 
 const DishCard = ({image, title, price, desc}) => {
   return (
-    <div className="flex flex-col gap-5 overflow-hidden rounded-ss-2xl max-w-72 rounded-se-2xl bg-theme-gray flex-1">
+    <div className="flex flex-col gap-5 overflow-hidden rounded-ss-2xl max-w-72 rounded-se-2xl bg-theme-gray flex-1 hover:shadow-xl hover:scale-[102%] transition-all duration-300">
       <img src={image} alt="Bruchetta" className="w-full h-48 object-cover" />
 
       <div className="flex flex-col justify-between px-7 pb-7 gap-3 h-full">
@@ -64,14 +64,15 @@ const DishCard = ({image, title, price, desc}) => {
           {desc}
         </p>
 
-        <div className="font-Karla font-semibold text-base flex items-center gap-4">
+        <div className="font-Karla font-semibold text-base flex items-center gap-4 hover:text-theme-green group cursor-pointer transition-all duration-200">
           <p>Order a delivery</p>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             x="0"
             y="0"
             viewBox="0 0 32.3 32.3"
-            className="w-5"
+            className="w-5 group-hover:fill-theme-green"
+
           >
             <g>
               <path d="M17.7,27.3c-1.1,0-1.9,0-3,0c0-2-0.1-4,0-5.9c0-1-0.3-1.5-1.2-2c-1.2-0.7-2.5-1.4-3.7-2.1c-1.8-1.1-2.2-3-0.8-4.5 c1.8-2,3.7-3.9,5.8-5.6c1.5-1.3,3.1-0.9,4.5,0.8c1.1,1.3,2.2,2.6,3.2,3.9c0.7,1,1.7,1.4,2.9,1.3c1.2,0,2.3,0,3.6,0c0,1,0,1.9,0,2.8 c-2.2,0-4.4,0.2-6.6-0.1c-0.8-0.1-1.5-1.1-2.2-1.7c-1.9-1.8-1.4-2-3.4-0.1c-0.6,0.5-1.2,1.1-2,1.8c0.5,0.5,0.9,1.1,1.4,1.5 c1,0.9,1.4,1.9,1.4,3.2C17.7,22.9,17.7,25,17.7,27.3z"></path>
