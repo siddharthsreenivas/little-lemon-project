@@ -27,7 +27,7 @@ const Specials = () => {
   ];
 
   return (
-    <section className="bg-white flex justify-center px-6 w-full">
+    <section id="menu" className="bg-white flex justify-center px-6 w-full">
       <MaxWidthContainer>
         <div className="flex flex-col gap-10 pb-16 lg:pt-32 pt-12 md:pt-24 items-center">
           <div className="flex flex-col gap-3 sm:flex-row justify-between items-center w-full">

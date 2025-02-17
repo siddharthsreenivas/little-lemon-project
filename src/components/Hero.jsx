@@ -18,7 +18,7 @@ const Hero = () => {
                 <button className="py-3 px-9 rounded-2xl text-xl font-semibold font-Karla bg-theme-yellow text-theme-green w-fit hover:scale-[102%] transition-all duration-200 hover:shadow-md hover:shadow-theme-gray/20 active:scale-[98%]">Reserve a Table</button>
             </div>
 
-            <div className="w-[75%] sm:w-[50%] md:w-[35%] overflow-hidden bg-red-400 rounded-2xl md:absolute md:right-0 top-7">
+            <div className="w-[75%] sm:w-[50%] md:w-[35%] overflow-hidden rounded-2xl md:absolute md:right-0 top-7">
                 <img src={heroImg} alt="Resturant" className="w-full " />
             </div>
           </div>

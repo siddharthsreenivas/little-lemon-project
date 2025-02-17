@@ -6,7 +6,7 @@ import About from '../components/About'
 
 const Home = () => {
   return (
-    <main className="bg-red-300 min-h-screen">
+    <main className="bg-white min-h-screen">
         <Hero />
         <Specials />
         <Testimonial />

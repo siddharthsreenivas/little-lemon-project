@@ -28,7 +28,7 @@ const Testimonial = () => {
       rating: 4,
       image: Profile3,
       name: "Angel John",
-      username: "_Angle__John",
+      username: "Angle__John",
       review: '"Best Feta Salad in town. Flawless everytime!"',
     },
     {
@@ -41,7 +41,7 @@ const Testimonial = () => {
   ];
 
   return (
-    <section className="bg-theme-green flex justify-center px-6 w-full">
+    <section id="testimonials" className="bg-theme-green flex justify-center px-6 w-full">
       <MaxWidthContainer>
         <div className="py-12 flex flex-col gap-16">
           <h2 className="font-Markazi text-5xl text-theme-yellow text-center">

@@ -5,7 +5,7 @@ import Image2 from '../assets/restaurant.jpg'
 
 const About = () => {
   return (
-    <section className='bg-white flex justify-center px-6 w-full py-20'>
+    <section id='about' className='bg-white flex justify-center px-6 w-full py-20'>
       <MaxWidthContainer>
         <div className='flex flex-col md:flex-row md:justify-between gap-10 md:gap-6 w-full '>
 
@@ -22,7 +22,7 @@ const About = () => {
 
           <div className='md:w-1/2 w-full h-[37vh] relative'>
             <img src={Image1} alt="" className='absolute top-0 w-[70%] z-10 h-auto  right-0 shadow-2xl rounded-2xl'/>
-            <img src={Image2} alt="" className='absolute bottom-14 lg:bottom-0 w-[70%] h-auto shadow-2xl  rounded-2xl'/>
+            <img src={Image2} alt="" className='absolute bottom-24 lg:bottom-0 w-[70%] h-auto shadow-2xl  rounded-2xl'/>
           </div>
 
         </div>

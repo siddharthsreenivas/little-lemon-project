@@ -1,6 +1,9 @@
 import React from "react";
 import FooterLogo from '../assets/FooterLogoWhite.svg'
 import MaxWidthContainer from "./MaxWidthContainer";
+import { Link as PageLink } from "react-scroll";
+import { Link as RouterLink } from 'react-router-dom';
+import {PageLinkData,RouterLinkData} from './Nav'
 
 const Footer = () => {
   return (
@@ -15,17 +18,22 @@ const Footer = () => {
       <div>
         <p className="text-theme-yellow font-semibold">Get to know us</p>
         <ul>
-          {[
-            "Home",
-            "About",
-            "Menu",
-            "Reservation",
-            "Order Online",
-          ].map((item, index) => (
+          <li>
+            <RouterLink to='/' className="hover:text-theme-yellow hover:underline underline-offset-4">Home</RouterLink>
+          </li>
+          {PageLinkData.map((item, index) => (
             <li key={index}>
-              <a href="#home" className="hover:text-theme-yellow hover:underline underline-offset-4">{item}</a>
+              <PageLink to={item.link} className="hover:text-theme-yellow hover:underline underline-offset-4 cursor-pointer">{item.title}</PageLink>
             </li>
           ))}
+          {RouterLinkData.map((item, index) => (
+            <li key={index}>
+              <RouterLink to={item.link} className="hover:text-theme-yellow hover:underline underline-offset-4">{item.title}</RouterLink>
+            </li>
+          ))}
+          <li>
+              <PageLink to='testimonials' className="hover:text-theme-yellow hover:underline underline-offset-4 cursor-pointer">Testimonials</PageLink>
+          </li>
         </ul>
       </div>
 
