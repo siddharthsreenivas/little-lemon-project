@@ -63,7 +63,7 @@ const ProfileCard = ({ rating, image, name, username, review }) => {
   const unratedStar = 5 - rating;
 
   return (
-    <div className="flex flex-col gap-5 rounded-2xl bg-white px-5 py-6 max-w-60 basis-52 flex-1">
+    <div className="flex flex-col gap-5 rounded-2xl bg-white px-5 py-6 max-w-60 basis-52 flex-1 hover:shadow-lg hover:shadow-theme-yellow/20 hover:scale-[102%] transition-all duration-300">
       <div className="flex gap-1">
         {Array.from({ length: ratedStar }, (_, i) => i + 1).map((_, index) => (
           <IoIosStar key={index} color="#F4CE14" size={25} />
