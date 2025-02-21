@@ -1,6 +1,7 @@
 import React from "react";
 import MaxWidthContainer from "./MaxWidthContainer";
 import heroImg from '../assets/heroImg.jpg'
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   return (
@@ -15,7 +16,9 @@ const Hero = () => {
 
                 <p className="text-theme-gray text-center md:text-start font-Karla leading-5 max-w-lg md:max-w-sm font-medium text-lg mb-4">We are a family owned Mediterranean resturant, focused on traditional recipes served with a modern twist.</p>
 
+                <Link to='/table-booking'>
                 <button className="py-3 px-9 rounded-2xl text-xl font-semibold font-Karla bg-theme-yellow text-theme-green w-fit hover:scale-[102%] transition-all duration-200 hover:shadow-md hover:shadow-theme-gray/20 active:scale-[98%]">Reserve a Table</button>
+                </Link>
             </div>
 
             <div className="w-[75%] sm:w-[50%] md:w-[35%] overflow-hidden rounded-2xl md:absolute md:right-0 top-7">
