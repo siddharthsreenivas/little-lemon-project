@@ -47,7 +47,7 @@ const Testimonial = () => {
           <h2 className="font-Markazi text-5xl text-theme-yellow text-center">
             Testimonial
           </h2>
-          <div className="flex  gap-5 justify-center lg:justify-between flex-wrap">
+          <div className="flex  gap-5 justify-center lg:justify-between flex-wrap font-Karla">
             {data.map((item, index) => (
               <ProfileCard key={index} {...item} />
             ))}
