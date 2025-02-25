@@ -11,7 +11,7 @@ const About = () => {
 
           <div className='md:w-1/2 w-full flex flex-col gap-2 md:gap-8'>
             <div className='flex flex-col font-Markazi font-medium text-theme-green text-center md:text-left'>
-              <h2 className='text-6xl leading-8'>Little Lemon</h2>
+              <h2 data-testid='heading' className='text-6xl leading-8'>Little Lemon</h2>
               <h3 className='text-4xl'>Chicago</h3>
             </div>
 

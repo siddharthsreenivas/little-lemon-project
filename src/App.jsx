@@ -1,6 +1,6 @@
 import Footer from './components/Footer';
 import Header from './components/Header';
-import Booking from './pages/Booking';
+import BookingPage from './pages/BookingPage';
 import Home from './pages/Home';
 import {Routes,Route} from 'react-router-dom'
 
@@ -10,7 +10,7 @@ function App() {
       <Header />
       <Routes>
         <Route path='/' element={<Home />} />
-        <Route path='/table-booking' element={<Booking />} />
+        <Route path='/table-booking' element={<BookingPage />} />
       </Routes>
       <Footer />
     </div>
