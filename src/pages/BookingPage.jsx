@@ -2,29 +2,42 @@ import React, { useReducer } from "react";
 import MaxWidthContainer from "../components/MaxWidthContainer";
 import { FaArrowLeft } from "react-icons/fa";
 import HeroImg from "../assets/restaurant.jpg";
-// import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import BookingForm from "../components/BookingForm";
+import {fetchAPI, submitAPI} from '../util/api'
 
 export const updateTimes = (state, action) => {
   switch (action.type) {
     case "UPDATE_TIMES":
-      console.log('selected date:', action.payload);
-      return initializeTimes();
+      const date = action.payload;
+      const availTimes = fetchAPI(new Date(date));
+      return availTimes
+      
     default:
       return state;
   }
 };
 
 export const initializeTimes = () => {
-  return ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00']
+  const today = new Date();
+  return fetchAPI(today)
 }
 
 const BookingPage = () => {
 
   const [availableTimes, dispatch] = useReducer(updateTimes, initializeTimes());
 
-  console.log(availableTimes);
+  const navigate = useNavigate();
   
+  const submitForm = (data) => {
+    if (submitAPI(data)) {
+      console.log('Form submitted successfully')
+      navigate('/confirmed')
+    }
+    else {
+      alert('Form submission failed')
+    }
+  }
 
   return (
     <main className="bg-white">
@@ -67,7 +80,7 @@ const BookingPage = () => {
               Reserve Your Table
             </h2>
 
-            <BookingForm availableTimes={availableTimes} dispatch={dispatch} />
+            <BookingForm availableTimes={availableTimes} dispatch={dispatch} submitForm={submitForm} />
 
           </div>
         </MaxWidthContainer>

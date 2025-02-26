@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 
-const BookingForm = ({availableTimes, dispatch}) => {
+const BookingForm = ({availableTimes, dispatch, submitForm}) => {
 
   const currentDate = new Date().toISOString().split("T")[0];
 
@@ -19,7 +19,7 @@ const BookingForm = ({availableTimes, dispatch}) => {
     dispatch({type: 'UPDATE_TIMES', payload: e.target.value})
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     console.log('----------------------------------------')
     console.log('date:', date)
@@ -27,6 +27,8 @@ const BookingForm = ({availableTimes, dispatch}) => {
     console.log('noOfGuests:', noOfGuests)
     console.log('occasion:', occasion)
     console.log('----------------------------------------')
+
+    submitForm({date, time, noOfGuests, occasion})
 
     setDate('')
     setTime('')

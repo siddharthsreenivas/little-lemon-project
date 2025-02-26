@@ -1,11 +1,10 @@
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import BookingForm from "./components/BookingForm";
 import {initializeTimes, updateTimes} from "./pages/BookingPage";
 
- // Adjust path as needed
 
-  const availableTimes = ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00'] 
-  const dispatch = jest.fn()
+const availableTimes = ['17:00', '18:00', '19:00', '20:00', '21:00', '22:00'] 
+const dispatch = jest.fn()
 
 test('Renders the BookingForm heading', () => {
   render(<BookingForm availableTimes={availableTimes} dispatch={dispatch} />);
@@ -15,7 +14,7 @@ test('Renders the BookingForm heading', () => {
 
 test('initializeTimes function returns correctly', () => {
   const result = initializeTimes()
-  expect(result).toEqual(availableTimes)
+  expect(result).not.toEqual([])
 })
 
 describe("updateTimes reducer function", () => {
@@ -29,12 +28,13 @@ describe("updateTimes reducer function", () => {
   });
 
   test("should return the initialized times when UPDATE_TIMES action is dispatched", () => {
+    const mockTimes = ['17:00', '17:30', '19:30', '21:00', '21:30']
     const initialState = initializeTimes();
-    const action = { type: "UPDATE_TIMES", payload: "2025-02-25" }; // Simulated date change
+    const action = { type: "UPDATE_TIMES", payload: "2025-03-03" }; // Simulated date change
 
     const result = updateTimes(initialState, action);
 
-    expect(result).toEqual(initializeTimes()); // Expect the same initialized times
+    expect(result).toEqual(mockTimes); // Expect the same initialized times
   });
 });
 
