@@ -52,7 +52,7 @@ const Specials = () => {
 const DishCard = ({image, title, price, desc}) => {
   return (
     <div className="flex flex-col gap-5 overflow-hidden rounded-ss-2xl max-w-72 rounded-se-2xl bg-theme-gray flex-1 hover:shadow-xl hover:scale-[102%] transition-all duration-300">
-      <img src={image} alt="Bruchetta" className="w-full h-48 object-cover" />
+      <img src={image} alt="Bruchetta" className="w-full min-h-48 object-cover" />
 
       <div className="flex flex-col justify-between px-7 pb-7 gap-3 h-full">
         <div className="flex justify-between font-Markazi text-2xl font-semibold">

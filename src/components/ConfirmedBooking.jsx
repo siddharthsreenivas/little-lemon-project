@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import MaxWidthContainer from "./MaxWidthContainer";
 import { FaCheckCircle } from "react-icons/fa";
 import HomeIcon from '../assets/home icon.svg'
 import { Link } from 'react-router-dom';
 
 const ConfirmedBooking = () => {
+
+  useEffect(() => {
+    window.scrollTo(0,0) 
+  }, [])
+  
+
   return (
     <section id='about' className='flex justify-center px-6 w-full py-20 sm:min-h-[57.9vh]'>
       <MaxWidthContainer>

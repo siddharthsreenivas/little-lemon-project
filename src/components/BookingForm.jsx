@@ -9,33 +9,88 @@ const BookingForm = ({availableTimes, dispatch, submitForm}) => {
   // const [time, setTime] = useState(availableTimes[0])
   // const [noOfGuests, setNoOfGuests] = useState(1)
   // const [occasion, setOccasion] = useState('')
-  const [date, setDate] = useState('')
-  const [time, setTime] = useState('')
-  const [noOfGuests, setNoOfGuests] = useState(1)
-  const [occasion, setOccasion] = useState('')
+  
+  const [formData, setFormData] = useState({
+    date: "",
+    time: "",
+    noOfGuests: 1,
+    occasion: "",
+  });
 
-  const handleDateChange = (e) => {
-    setDate(e.target.value)
-    dispatch({type: 'UPDATE_TIMES', payload: e.target.value})
+  const [error,setError] = useState({})
+
+  // const handleDateChange = (e) => {
+  //   setDate(e.target.value)
+  //   dispatch({type: 'UPDATE_TIMES', payload: e.target.value})
+  // }
+  
+  const validateField = (name, value) => {
+    let errorMessage = "";
+    
+    if (name === "date" && !value) {
+      errorMessage = "Date is required.";
+    }
+
+    if (name === "time" && !value) {
+      errorMessage = "Please select a time.";
+    }
+    
+    if (name === "noOfGuests") {
+      if (!value || value < 1 || value > 8) {
+        errorMessage = "Guests must be between 1 and 8.";
+      }
+    }
+
+    if (name === "occasion" && !value) {
+      errorMessage = "Please select an occasion.";
+    }
+
+    setError((prevErrors) => ({
+      ...prevErrors,
+      [name]: errorMessage,
+    }));
+  };
+
+  const handleChange = (e) => {
+    const {name, value} = e.target
+
+    setFormData((prev) => ({...prev, [name]: value}))
+
+    validateField(name, value)
+
+    if(name === 'date'){
+      dispatch({type: 'UPDATE_TIMES', payload: e.target.value})
+    }
+
   }
 
-  const handleSubmit = async (e) => {
+  const handleBlur = (e) => {
+    validateField(e.target.name, e.target.value)
+  }
+
+  const handleSubmit = (e) => {
     e.preventDefault()
-    console.log('----------------------------------------')
-    console.log('date:', date)
-    console.log('time:', time)
-    console.log('noOfGuests:', noOfGuests)
-    console.log('occasion:', occasion)
-    console.log('----------------------------------------')
 
-    submitForm({date, time, noOfGuests, occasion})
+    Object.keys(formData).forEach((key) => validateField(key, formData[key]));
+    if (Object.values(error).some((error) => error)) {
+      return;
+    }
 
-    setDate('')
-    setTime('')
-    setNoOfGuests(1)
-    setOccasion('')
+    submitForm(formData)
+
+    setFormData({
+      date: "",
+      time: "",
+      noOfGuests: 1,
+      occasion: "",
+    })
+
+    setError({})
+    
   }
-
+  
+  const isFormValid = Object.values(error).every((error) => !error) && Object.values(formData).every((value) => value);
+  
   return (
     <form
       className="flex flex-col gap-6 w-full max-w-lg font-Karla"
@@ -49,12 +104,15 @@ const BookingForm = ({availableTimes, dispatch, submitForm}) => {
         <input
           type="date"
           id="date"
-          value={date}
-          onChange={handleDateChange}
+          name="date"
+          value={formData.date}
+          onChange={handleChange}
+          onBlur={handleBlur}
           className="text-theme-green border-2 border-theme-green px-6 py-2 rounded-2xl hover:shadow-lg focus:ring-2 ring-theme-yellow text-lg "
           min={currentDate}
           required
         />
+        {error.date && <p className="text-sm text-red-400">{error.date}</p>}
       </div>
 
     {/* time */}
@@ -65,13 +123,16 @@ const BookingForm = ({availableTimes, dispatch, submitForm}) => {
         <select
           id="time"
           className="text-theme-green border-2 border-theme-green px-6 py-2 rounded-2xl appearance-none hover:shadow-lg focus:ring-2 ring-theme-yellow text-lg"
-          onChange={(e)=>setTime(e.target.value)}
-          value={time}
+          onChange={handleChange}
+          value={formData.time}
+          name="time"
+          onBlur={handleBlur}
           required
         >
           <option value="" disabled>Choose your time</option>
           {availableTimes.map((time,i)=> <option key={i} value={time}>{time}</option>)}
         </select>
+        {error.time && <p className="text-sm text-red-400">{error.time}</p>}
         <div className="absolute inset-y-0 right-3 top-10 pointer-events-none">
           <IoIosArrowDown color="#495e57" size={25} />
         </div>
@@ -84,15 +145,18 @@ const BookingForm = ({availableTimes, dispatch, submitForm}) => {
         </label>
         <input
           className="text-theme-green border-2 border-theme-green px-6 py-2 rounded-2xl hover:shadow-lg focus:ring-2 ring-theme-yellow placeholder:font-Karla text-lg"
-          value={noOfGuests}
-          onChange={(e)=>setNoOfGuests(e.target.value)}
+          value={formData.noOfGuests}
+          onChange={handleChange}
           type="number"
+          name="noOfGuests"
+          onBlur={handleBlur}
           placeholder="1"
           min="1"
           max="8"
           id="guests"
           required
         />
+        {error.noOfGuests && <p className="text-sm text-red-400">{error.noOfGuests}</p>}
       </div>
 
     {/* occasion */}
@@ -103,14 +167,17 @@ const BookingForm = ({availableTimes, dispatch, submitForm}) => {
         <select
           className="text-theme-green border-2 border-theme-green px-6 py-2 rounded-2xl hover:shadow-lg focus:ring-2 ring-theme-yellow text-lg appearance-none"
           id="occasion"
-          value={occasion}
-          onChange={(e) => setOccasion(e.target.value)}
+          value={formData.occasion}
+          onChange={handleChange}
           required
+          name="occasion"
+          onBlur={handleBlur}
         >
           <option value="" disabled>Choose your occasion</option>
           <option value="Birthday">Birthday</option>
           <option value="Anniversary">Anniversary</option>
         </select>
+        {error.occasion && <p className="text-sm text-red-400">{error.occasion}</p>}
         <div className="absolute inset-y-0 right-3 top-10 pointer-events-none">
           <IoIosArrowDown color="#495e57" size={25} />
         </div>
@@ -119,7 +186,9 @@ const BookingForm = ({availableTimes, dispatch, submitForm}) => {
     {/* submit button */}
       <button
         type="submit"
-        className="text-lg bg-theme-yellow px-4 py-3 mt-3 rounded-2xl font-bold hover:shadow-lg hover:-translate-y-1 transition-all duration-200 active:scale-95 hover:ring-2 ring-theme-green/50 text-theme-green"
+        // disabled={!isFormValid}
+        className={`text-lg  px-4 py-3 mt-3 rounded-2xl font-bold transition-all duration-200   ring-theme-green/50
+          ${isFormValid ? 'bg-theme-yellow text-theme-green active:scale-95 hover:shadow-lg hover:-translate-y-1  hover:ring-2 ' : 'bg-black/50 text-theme-gray cursor-not-allowed'} `}
       >
         Book Now
       </button>

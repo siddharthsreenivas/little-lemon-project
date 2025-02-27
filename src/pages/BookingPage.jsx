@@ -45,9 +45,9 @@ const BookingPage = () => {
         <MaxWidthContainer>
           <div className="flex w-full items-start gap-6 py-5 md:py-10 pb-10">
             <div className="bg-theme-yellow p-3 h-fit rounded-full mt-2 cursor-pointer">
-              {/* <Link to="/"> */}
+              <Link to="/">
                 <FaArrowLeft size={23} />
-              {/* </Link> */}
+              </Link>
             </div>
             <div className="flex flex-col gap-3">
               <div className="-space-y-3">
