@@ -44,7 +44,7 @@ const Testimonial = () => {
     <section id="testimonials" className="bg-theme-green flex justify-center px-6 w-full">
       <MaxWidthContainer>
         <div className="py-12 flex flex-col gap-16">
-          <h2 className="font-Markazi text-5xl text-theme-yellow text-center">
+          <h2 aria-label="Testimonial" className="font-Markazi text-5xl text-theme-yellow text-center">
             Testimonial
           </h2>
           <div className="flex  gap-5 justify-center lg:justify-between flex-wrap font-Karla">

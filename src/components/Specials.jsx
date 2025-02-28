@@ -32,7 +32,7 @@ const Specials = () => {
         <div className="flex flex-col gap-10 pb-16 lg:pt-32 pt-12 md:pt-24 items-center">
           <div className="flex flex-col gap-3 sm:flex-row justify-between items-center w-full">
             <h2 className="font-Markazi text-5xl">This weeks specials!</h2>
-            <button className="py-3 px-9 rounded-2xl text-xl font-semibold font-Karla bg-theme-yellow text-theme-green w-fit hover:scale-[102%] transition-all duration-200 hover:shadow-md hover:shadow-theme-green/40 active:scale-[98%]">
+            <button aria-label="Menu button" className="py-3 px-9 rounded-2xl text-xl font-semibold font-Karla bg-theme-yellow text-theme-green w-fit hover:scale-[102%] transition-all duration-200 hover:shadow-md hover:shadow-theme-green/40 active:scale-[98%]">
               Online Menu
             </button>
           </div>

@@ -94,7 +94,7 @@ const BookingForm = ({availableTimes, dispatch, submitForm}) => {
   return (
     <form
       className="flex flex-col gap-6 w-full max-w-lg font-Karla"
-      onSubmit={handleSubmit}>
+      onSubmit={handleSubmit} aria-label="Booking Form">
 
     {/* date */}
       <div className="flex flex-col gap-1 ">
@@ -106,8 +106,10 @@ const BookingForm = ({availableTimes, dispatch, submitForm}) => {
           id="date"
           name="date"
           value={formData.date}
+          aria-label="Select a date"
           onChange={handleChange}
           onBlur={handleBlur}
+          data-testid="date"
           className="text-theme-green border-2 border-theme-green px-6 py-2 rounded-2xl hover:shadow-lg focus:ring-2 ring-theme-yellow text-lg "
           min={currentDate}
           required
@@ -126,6 +128,8 @@ const BookingForm = ({availableTimes, dispatch, submitForm}) => {
           onChange={handleChange}
           value={formData.time}
           name="time"
+          aria-label="Select a time"
+          data-testid="time"
           onBlur={handleBlur}
           required
         >
@@ -152,6 +156,8 @@ const BookingForm = ({availableTimes, dispatch, submitForm}) => {
           onBlur={handleBlur}
           placeholder="1"
           min="1"
+          aria-label="Number of guests"
+          data-testid="noOfGuests"
           max="8"
           id="guests"
           required
@@ -170,6 +176,8 @@ const BookingForm = ({availableTimes, dispatch, submitForm}) => {
           value={formData.occasion}
           onChange={handleChange}
           required
+          aria-label="Select an occasion"
+          data-testid="occasion"
           name="occasion"
           onBlur={handleBlur}
         >
@@ -186,7 +194,9 @@ const BookingForm = ({availableTimes, dispatch, submitForm}) => {
     {/* submit button */}
       <button
         type="submit"
+        aria-label="Submit Button"
         // disabled={!isFormValid}
+        data-testid="submitButton"
         className={`text-lg  px-4 py-3 mt-3 rounded-2xl font-bold transition-all duration-200   ring-theme-green/50
           ${isFormValid ? 'bg-theme-yellow text-theme-green active:scale-95 hover:shadow-lg hover:-translate-y-1  hover:ring-2 ' : 'bg-black/50 text-theme-gray cursor-not-allowed'} `}
       >

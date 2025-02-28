@@ -13,7 +13,7 @@ const Footer = () => {
 
      <div className="flex flex-col sm:flex-row items-start justify-between gap-6 text-xl"> 
 
-      <img src={FooterLogo} alt="Little Lemon Logo" className="w-24 md:w-32 cursor-pointer" />
+      <img src={FooterLogo} aria-label="Logo" alt="Little Lemon Logo" className="w-24 md:w-32 cursor-pointer" />
 
       <div>
         <p className="text-theme-yellow font-semibold">Get to know us</p>

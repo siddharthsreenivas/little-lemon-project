@@ -7,7 +7,7 @@ const Header = () => {
     <header id="home" className="flex justify-center py-5 px-6 relative z-50">
       <div className="w-full max-w-4xl flex justify-between items-center">
         <Link to='/'>
-          <img src="./Logo.png" alt="Little Lemon Logo" className="w-40 h-auto" />  
+          <img src="./Logo.png" aria-label="Logo" alt="Little Lemon Logo" className="w-40 h-auto" />  
         </Link>
         <Nav />
       </div>

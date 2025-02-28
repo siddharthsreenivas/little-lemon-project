@@ -85,7 +85,7 @@ const Nav = () => {
             <RouterLink
               to='/'
               onClick={()=>setIsOpen(!isOpen)}
-              className="text-theme-green font-Karla font-medium hover:text-theme-yellow/90 hover:underline underline-offset-4 transition-all duration-200"
+              className="text-theme-green font-Karla font-medium hover:text-theme-yellow/90 hover:underline underline-offset-4 transition-all duration-200" aria-label="Home"
             >
               Home
             </RouterLink>

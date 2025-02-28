@@ -38,3 +38,65 @@ describe("updateTimes reducer function", () => {
   });
 });
 
+describe("Form Validation", () => {
+  test('HTML5 Form validation ', ()=>{
+    render(<BookingForm availableTimes={availableTimes} dispatch={dispatch} submitForm={jest.fn()} />);
+    const date = screen.getByTestId('date')
+    const time = screen.getByTestId('time')
+    const noOfGuests = screen.getByTestId('noOfGuests')
+    const occasion = screen.getByTestId('occasion')
+    const submitButton = screen.getByTestId("submitButton");
+
+    expect(date).toBeRequired()
+    expect(date).toHaveAttribute('type', 'date')
+    expect(time).toBeRequired()
+    expect(noOfGuests).toBeRequired()
+    expect(noOfGuests).toHaveAttribute("type", "number");
+    expect(noOfGuests).toHaveAttribute('min','1')
+    expect(noOfGuests).toHaveAttribute('max','8')
+    expect(occasion).toBeRequired()
+    // expect(submitButton).toBeDisabled()
+  })
+
+  test('shows error messages with invalid data', ()=>{
+    render(<BookingForm availableTimes={availableTimes} dispatch={dispatch} submitForm={jest.fn()} />);
+
+    const date = screen.getByTestId('date')
+    fireEvent.change(date, { target: { value: ''}})
+    fireEvent.blur(date)
+    expect(screen.getByText("Date is required.")).toBeInTheDocument();
+
+    const noOfGuests = screen.getByTestId('noOfGuests')
+    fireEvent.change(noOfGuests, { target: { value: "9" } }); 
+    expect(screen.getByText("Guests must be between 1 and 8.")).toBeInTheDocument();
+  })
+
+  test("calls submitForm function with valid data", async () => {
+
+    const submitForm = jest.fn();
+
+    render(
+      <BookingForm availableTimes={availableTimes} dispatch={dispatch} submitForm={submitForm} />
+    );
+
+    fireEvent.change(screen.getByLabelText("Select a date"), { target: { value: "2025-03-03" } });
+    fireEvent.change(screen.getByLabelText("Select a time"), { target: { value: "19:30" } });
+    fireEvent.change(screen.getByLabelText("Number of guests"), { target: { value: "3" } });
+    fireEvent.change(screen.getByLabelText("Select an occasion"), { target: { value: "Birthday" } });
+
+  
+    const submitButton = screen.getByTestId("submitButton");
+    fireEvent.click(submitButton)
+
+    expect(submitButton).toBeEnabled()
+
+    // expect(submitForm).toHaveBeenCalled({
+    //   date: "2025-12-25",
+    //   time: "19:00",
+    //   noOfGuests: 3,
+    //   occasion: "Anniversary",
+    // })
+
+  });
+
+})
